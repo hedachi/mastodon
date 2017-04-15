@@ -75,13 +75,13 @@
     %h3= t('about.description_headline', domain: Rails.configuration.x.local_domain)
     %p= @instance_presenter.site_description.html_safe
 
-  %h3 株式会社ミリオンダウトについて
-
-  %p= t('about.about_milliondoubts_inc_html').html_safe
-
   %h3 Mastodonについて
 
   %p= t('about.about_mastodon').html_safe
+
+  %h3 株式会社ミリオンダウトについて
+
+  %p= t('about.about_milliondoubts_inc_html').html_safe
 
   .actions
     .info
