@@ -1,5 +1,9 @@
-ようこそ<%= @resource.email %>さん
+<p>ようこそ、<%= @resource.email %>さん</p>
 
-以下のリンクをクリックして、ミリドンのメールアドレスの確認を完了して下さい。
+<p>ミリドンのユーザーを作成します。</p>
+
+<p>以下のリンクをクリックして、ミリドンのメールアドレス確認を完了して下さい。</p>
 
 <%= confirmation_url(@resource, confirmation_token: @token) %>
+
+<p>株式会社ミリオンダウト</p>
