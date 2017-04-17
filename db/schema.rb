@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414132105) do
+ActiveRecord::Schema.define(version: 20170417134721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -315,6 +315,8 @@ ActiveRecord::Schema.define(version: 20170414132105) do
     t.boolean  "otp_required_for_login"
     t.datetime "last_emailed_at"
     t.string   "otp_backup_codes",                                       array: true
+    t.string   "uid"
+    t.string   "provider"
     t.index ["account_id"], name: "index_users_on_account_id", using: :btree
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

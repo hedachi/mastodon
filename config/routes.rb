@@ -18,11 +18,14 @@ Rails.application.routes.draw do
   get '.well-known/host-meta', to: 'well_known/host_meta#show', as: :host_meta, defaults: { format: 'xml' }
   get '.well-known/webfinger', to: 'well_known/webfinger#show', as: :webfinger, defaults: { format: 'json' }
 
+  #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   devise_for :users, path: 'auth', controllers: {
     sessions:           'auth/sessions',
     registrations:      'auth/registrations',
     passwords:          'auth/passwords',
     confirmations:      'auth/confirmations',
+    omniauth_callbacks: 'users/omniauth_callbacks',
   }
 
   get '/users/:username', to: redirect('/@%{username}'), constraints: { format: :html }
