@@ -21,26 +21,17 @@
 
   %p= t('about.about_milliondoubts_mastodon_html').html_safe
 
-  = link_to 'twitter', user_twitter_omniauth_authorize_path()
-  /= user_omniauth_authorize_path(:facebook)
+  = form_tag user_twitter_omniauth_authorize_path(), class: 'simple_form' do |f|
+    .actions
+      %button.btn
+        = image_tag('Twitter_Social_Icon_Square_Transparent.png', style:"width: 50px;")
+        %div{ style: "display:inline-block; padding: 10px; vertical-align:top;"}
+          Twitterでログイン
 
-  .screenshot-with-signup
-    .mascot= image_tag 'https://s3-ap-northeast-1.amazonaws.com/milliondoubts/napoleonPause.png'
+  %p= t('about.about_milliondoubts_mastodon_html_2').html_safe
 
-    - if @instance_presenter.open_registrations
-      = render 'registration'
-    - else
-      .closed-registrations-message
-        - if @instance_presenter.closed_registrations_message.blank?
-          %p= t('about.closed_registrations')
-        - else
-          = @instance_presenter.closed_registrations_message.html_safe
-        .info
-          = link_to t('auth.login'), new_user_session_path, class: 'webapp-btn'
-          ·
-          = link_to t('about.other_instances'), 'https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/List-of-Mastodon-instances.md'
-          ·
-          = link_to t('about.about_this'), about_more_path
+  %div{ style: "text-align:center;" }
+    = image_tag 'https://s3-ap-northeast-1.amazonaws.com/milliondoubts/napoleonPause.png', style: "width: 80%;"
 
   %h3= t('about.features_headline')
 
@@ -78,29 +69,51 @@
     %h3= t('about.description_headline', domain: Rails.configuration.x.local_domain)
     %p= @instance_presenter.site_description.html_safe
 
+  %br
+  %br
+
   %h3 Mastodonについて
 
   %p= t('about.about_mastodon').html_safe
+
+  %br
+  %br
 
   %h3 株式会社ミリオンダウトについて
 
   %p= t('about.about_milliondoubts_inc_html').html_safe
 
-  %h3 アプリ「ミリオンダウト」について
+  %br
+  %br
+
+  /%h3 アプリ「ミリオンダウト」について
+
+  /%p
+  /  大富豪とダウトを合わせたトランプゲーム「ミリオンダウト」が遊べるアプリです。
+  /  %br
+  /  1ゲーム3分で濃密な騙し合いのスリルを味わうことができます。
+  /  %br
+  /  基本のルールを覚えるのに必要な時間は1分程度ですが、極めるには高度な戦略眼と観察眼が必要な頭脳対戦型ゲームです。
+  /  %br
+  /  ワンタップで自動で対戦相手とマッチングします。
+  /  %br
+  /  あなたの嘘つき度や疑り深さ等から性格を判定する「ミリオンダウト性格診断」機能もあります。
+
+  /%br
+  /%br
+
+  %h3 メールアドレスでのログイン
 
   %p
-    大富豪とダウトを合わせたトランプゲーム「ミリオンダウト」が遊べるアプリです。
-    %br
-    1ゲーム3分で濃密な騙し合いのスリルを味わうことができます。
-    %br
-    基本のルールを覚えるのに必要な時間は1分程度ですが、極めるには高度な戦略眼と観察眼が必要な頭脳対戦型ゲームです。
-    %br
-    ワンタップで自動で対戦相手とマッチングします。
-    %br
-    あなたの嘘つき度や疑り深さ等から性格を判定する「ミリオンダウト性格診断」機能もあります。
+    = link_to 'こちらからご利用下さい。', new_user_session_path, class: 'webapp-btn'
+
+  %br
+  %br
 
   .actions
     .info
+      = link_to t('about.about_this'), about_more_path
+      ·
       = link_to t('about.terms'), terms_path
       ·
       = link_to t('about.apps'), 'https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/Apps.md'
