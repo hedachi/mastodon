@@ -22,7 +22,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       #ActionDispatch::Cookies::CookieOverflow エラー | EasyRamble http://easyramble.com/cookie-overflow-on-rails.html
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
       @user.account = Account.new
-      @user.account.username = 'hoge'
+      @user.account.username = request.env["omniauth.auth"].info["nickname"]
       @user.save!
     end
 
