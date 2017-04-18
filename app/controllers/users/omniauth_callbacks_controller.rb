@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
   def facebook
     callback_from :facebook
   end
@@ -16,15 +17,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
-      sign_in_and_redirect @user, event: :authentication
     else
+      #cookieが大きすぎてエラーになるので下記のように修正
       #ActionDispatch::Cookies::CookieOverflow エラー | EasyRamble http://easyramble.com/cookie-overflow-on-rails.html
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
       @user.account = Account.new
       @user.account.username = 'hoge'
       @user.save!
-
-      sign_in_and_redirect @user, event: :authentication #FIXME ログインできない
     end
+
+    sign_in @user
+    redirect_to '/auth/sign_in'
   end
 end
