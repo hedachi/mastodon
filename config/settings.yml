@@ -8,9 +8,9 @@
 #
 defaults: &defaults
   site_title: 'ミリドン'
-  site_description: ''
+  site_description: 'ミリドンは、<a href="http://app.milliondoubts.com">トランプゲーム「ミリオンダウト」</a>の普及を目指す株式会社ミリオンダウトの運営するマストドンサーバーです。<br><br>ミリオンダウトの話に限らず、何の話をしても大丈夫ですが、よかったらミリオンダウトも遊んでみて下さいね！'
   site_extended_description: ''
-  site_contact_username: ''
+  site_contact_username: 'hedachi'
   site_contact_email: ''
   open_registrations: true
   closed_registrations_message: ''
