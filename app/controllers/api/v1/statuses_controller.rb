@@ -57,6 +57,13 @@ class Api::V1::StatusesController < ApiController
   end
 
   def create
+    prev_status = Status.order('id desc').first
+    if status_params[:status].first != prev_status.text.last
+      logger.info "#{status_params[:status].first} != #{prev_status.text.last}"
+      raise "しりとりになっていません。"
+    else
+      logger.info "#{status_params[:status].first} == #{prev_status.text.last}"
+    end
     @status = PostStatusService.new.call(current_user.account, status_params[:status], status_params[:in_reply_to_id].blank? ? nil : Status.find(status_params[:in_reply_to_id]), media_ids: status_params[:media_ids],
                                                                                                                                                                                   sensitive: status_params[:sensitive],
                                                                                                                                                                                   spoiler_text: status_params[:spoiler_text],
