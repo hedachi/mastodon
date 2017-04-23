@@ -32,6 +32,10 @@ class User < ApplicationRecord
     settings.boost_modal
   end
 
+  def setting_auto_play_gif
+    settings.auto_play_gif
+  end
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
@@ -51,9 +55,5 @@ class User < ApplicationRecord
 
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@mldn.jp"
-  end
-
-  def setting_auto_play_gif
-    settings.auto_play_gif
   end
 end
