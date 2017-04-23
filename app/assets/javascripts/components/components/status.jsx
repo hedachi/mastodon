@@ -83,6 +83,11 @@ const Status = React.createClass({
       }
     }
 
+    let status_content = <StatusContent status={status} onClick={this.handleClick} />;
+    if (!status.get('is_siritori_success')) {
+      status_content = <strike>{status_content}</strike>
+    }
+
     return (
       <div className={this.props.muted ? 'status muted' : 'status'}>
         <div style={{ fontSize: '15px' }}>
@@ -99,7 +104,7 @@ const Status = React.createClass({
           </a>
         </div>
 
-        <StatusContent status={status} onClick={this.handleClick} />
+        {status_content}
 
         {media}
 
