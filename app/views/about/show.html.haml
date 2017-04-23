@@ -8,7 +8,7 @@
   %meta{ property: 'og:site_name', content: site_title }/
   %meta{ property: 'og:type', content: 'website' }/
   %meta{ property: 'og:title', content: site_hostname }/
-  %meta{ property: 'og:description', content: strip_tags(@instance_presenter.site_description.presence || t('about.about_mastodon')) }/
+  %meta{ property: 'og:description', content: strip_tags(@instance_presenter.site_description.blank? ? 'ミリドンは、トランプゲーム「ミリオンダウト」の普及を目指す株式会社ミリオンダウトの運営するマストドンのサーバーです。メールアドレスの登録やパスワードの設定無しで、Twitterアカウントでかんたんに登録できます！' : @instance_presenter.site_description) }/
   %meta{ property: 'og:image', content: asset_url('mastodon_small.jpg') }/
   %meta{ property: 'og:image:width', content: '400' }/
   %meta{ property: 'og:image:height', content: '400' }/
@@ -19,25 +19,27 @@
     = image_tag 'logo.png'
     = Setting.site_title
 
-  %p= t('about.about_mastodon').html_safe
+  %p= t('about.about_milliondoubts_mastodon_html').html_safe
 
-  .screenshot-with-signup
-    .mascot= image_tag 'fluffy-elephant-friend.png'
+  - if @instance_presenter.open_registrations
+    = render '/auth/shared/twitter'
+  - else
+    .closed-registrations-message
+      - if @instance_presenter.closed_registrations_message.blank?
+        %p= t('about.closed_registrations')
+      - else
+        = @instance_presenter.closed_registrations_message.html_safe
+      .info
+        = link_to t('auth.login'), new_user_session_path, class: 'webapp-btn'
+        ·
+        = link_to t('about.other_instances'), 'https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/List-of-Mastodon-instances.md'
+        ·
+        = link_to t('about.about_this'), about_more_path
 
-    - if @instance_presenter.open_registrations
-      = render 'registration'
-    - else
-      .closed-registrations-message
-        - if @instance_presenter.closed_registrations_message.blank?
-          %p= t('about.closed_registrations')
-        - else
-          = @instance_presenter.closed_registrations_message.html_safe
-        .info
-          = link_to t('auth.login'), new_user_session_path, class: 'webapp-btn'
-          ·
-          = link_to t('about.other_instances'), 'https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/List-of-Mastodon-instances.md'
-          ·
-          = link_to t('about.about_this'), about_more_path
+  %p= t('about.about_milliondoubts_mastodon_html_2').html_safe
+
+  %div{ style: "text-align:center;" }
+    = image_tag 'https://s3-ap-northeast-1.amazonaws.com/milliondoubts/napoleonPause.png', style: "width: 80%;"
 
   %h3= t('about.features_headline')
 
@@ -75,8 +77,51 @@
     %h3= t('about.description_headline', domain: site_hostname)
     %p= @instance_presenter.site_description.html_safe
 
+  %br
+  %br
+
+  %h3 Mastodonについて
+
+  %p= t('about.about_mastodon').html_safe
+
+  %br
+  %br
+
+  %h3 株式会社ミリオンダウトについて
+
+  %p= t('about.about_milliondoubts_inc_html').html_safe
+
+  %br
+  %br
+
+  /%h3 アプリ「ミリオンダウト」について
+
+  /%p
+  /  大富豪とダウトを合わせたトランプゲーム「ミリオンダウト」が遊べるアプリです。
+  /  %br
+  /  1ゲーム3分で濃密な騙し合いのスリルを味わうことができます。
+  /  %br
+  /  基本のルールを覚えるのに必要な時間は1分程度ですが、極めるには高度な戦略眼と観察眼が必要な頭脳対戦型ゲームです。
+  /  %br
+  /  ワンタップで自動で対戦相手とマッチングします。
+  /  %br
+  /  あなたの嘘つき度や疑り深さ等から性格を判定する「ミリオンダウト性格診断」機能もあります。
+
+  /%br
+  /%br
+
+  %h3 メールアドレスでのログイン
+
+  %p
+    = link_to 'こちらからご利用下さい。', new_user_session_path, class: 'webapp-btn'
+
+  %br
+  %br
+
   .actions
     .info
+      = link_to t('about.about_this'), about_more_path
+      ·
       = link_to t('about.terms'), terms_path
       ·
       = link_to t('about.apps'), 'https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/Apps.md'

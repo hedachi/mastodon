@@ -2,6 +2,11 @@
 ja:
   about:
     about_mastodon: Mastodon は<em>自由でオープンソース</em>なソーシャルネットワークです。商用プラットフォームの代替となる<em>分散型</em>を採用し、あなたのやりとりが一つの会社によって独占されるのを防ぎます。信頼できるインスタンスを選択してください &mdash; どのインスタンスを選んでも、誰とでもやりとりすることができます。 だれでも自分の Mastodon インスタンスを作ることができ、シームレスに<em>ソーシャルネットワーク</em>に参加できます。
+    #about_milliondoubts_mastodon_html: ミリドンへようこそ！<br>ミリドンは、誰でもツイッターのようなものを作れる仕組みである「マストドン（Mastodon）」を使って、株式会社ミリオンダウトが設置・運営しています。<br>マストドンは他にもたくさん設置されていますが、友達が他のマストドンを使っていてもフォローできるので、あなたも好きなマストドンを選んで参加しましょう！<br>使い方はツイッターとだいたい同じです。
+    about_milliondoubts_mastodon_html: ミリドンは、<a href="http://app.milliondoubts.com">トランプゲーム「ミリオンダウト」</a>の普及を目指す株式会社ミリオンダウトの運営するマストドンサーバーです。<br><br>メールアドレスやパスワードは不要で、Twitterアカウントを使って登録できます。
+    about_milliondoubts_mastodon_html_2: ミリオンダウトの話に限らず、何の話をしても大丈夫ですが、よかったらミリオンダウトも遊んでみて下さいね！
+    about_milliondoubts_inc_html: Webサイトもない小さい会社ですが、<a href="https://twitter.com/search?f=tweets&vertical=default&q=%E3%83%9F%E3%83%AA%E3%82%AA%E3%83%B3%E3%83%80%E3%82%A6%E3%83%88&src=typd">ミリオンダウトアプリは結構人気です！</a>
+
     about_this: このインスタンスについて
     apps: アプリ
     business_email: 'ビジネスメールアドレス:'

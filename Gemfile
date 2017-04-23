@@ -25,6 +25,8 @@ gem 'aws-sdk', '>= 2.0'
 gem 'addressable'
 gem 'devise'
 gem 'devise-two-factor'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'doorkeeper'
 gem 'fast_blank'
 gem 'goldfinger'
@@ -81,6 +83,8 @@ group :test do
 end
 
 group :development do
+  gem 'pry'
+  gem 'pry-byebug'
   gem 'rubocop', require: false
   gem 'better_errors'
   gem 'binding_of_caller'
