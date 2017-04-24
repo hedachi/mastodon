@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423025222) do
+ActiveRecord::Schema.define(version: 20170423233954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "account_siritori_data", force: :cascade do |t|
-    t.integer "account_id",             null: false
-    t.integer "level",      default: 0, null: false
-    t.index ["account_id"], name: "index_account_siritori_data_on_account_id", using: :btree
+    t.integer  "account_id",             null: false
+    t.integer  "level",      default: 1, null: false
+    t.integer  "stamina",    default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "accounts", force: :cascade do |t|
@@ -220,6 +222,8 @@ ActiveRecord::Schema.define(version: 20170423025222) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.integer  "action_taken_by_account_id"
+    t.index ["account_id"], name: "index_reports_on_account_id", using: :btree
+    t.index ["target_account_id"], name: "index_reports_on_target_account_id", using: :btree
   end
 
   create_table "settings", force: :cascade do |t|
