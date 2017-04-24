@@ -21,7 +21,7 @@ class PostStatusService < BaseService
                                       sensitive: options[:sensitive],
                                       spoiler_text: options[:spoiler_text] || '',
                                       visibility: options[:visibility],
-                                      language: detect_language(text),
+                                      language: detect_language_for(text, account),
                                       is_siritori_success: is_siritori_success,
                                       application: options[:application])
 
