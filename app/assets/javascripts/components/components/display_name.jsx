@@ -17,7 +17,7 @@ const DisplayName = React.createClass({
 
     return (
       <span style={{ display: 'block', maxWidth: '100%', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }} className='display-name'>
-        <strong style={{ fontWeight: '500' }} dangerouslySetInnerHTML={displayNameHTML} /> <span style={{ fontSize: '14px' }}>@{this.props.account.get('acct')}</span>
+        <strong style={{ fontWeight: '500' }} dangerouslySetInnerHTML={displayNameHTML} /> <span style={{ fontSize: '14px' }}>@{this.props.account.get('acct')}</span> <span>発言力:{this.props.account.get('level')}</span>
       </span>
     );
   }

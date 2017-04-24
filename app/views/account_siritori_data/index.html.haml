@@ -1,0 +1,25 @@
+%h1 Listing account_siritori_data
+
+%table
+  %thead
+    %tr
+      %th Account
+      %th Level
+      %th Stamina
+      %th
+      %th
+      %th
+
+  %tbody
+    - @account_siritori_data.each do |account_siritori_datum|
+      %tr
+        %td= account_siritori_datum.account_id
+        %td= account_siritori_datum.level
+        %td= account_siritori_datum.stamina
+        %td= link_to 'Show', account_siritori_datum
+        %td= link_to 'Edit', edit_account_siritori_datum_path(account_siritori_datum)
+        %td= link_to 'Destroy', account_siritori_datum, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Account siritori datum', new_account_siritori_datum_path

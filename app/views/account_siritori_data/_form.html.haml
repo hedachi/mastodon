@@ -1,0 +1,13 @@
+= simple_form_for(@account_siritori_datum) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.label :account_id
+    = f.input :account_id
+    = f.label :level
+    = f.input :level
+    = f.label :stamina
+    = f.input :stamina
+
+  .form-actions
+    = f.button :submit

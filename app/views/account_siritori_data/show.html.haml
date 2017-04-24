@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Account:
+  = @account_siritori_datum.account_id
+%p
+  %b Level:
+  = @account_siritori_datum.level
+%p
+  %b Stamina:
+  = @account_siritori_datum.stamina
+
+= link_to 'Edit', edit_account_siritori_datum_path(@account_siritori_datum)
+\|
+= link_to 'Back', account_siritori_data_path
