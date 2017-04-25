@@ -56,6 +56,8 @@ const Status = React.createClass({
       return <div />;
     }
 
+    const level = status.getIn(['account', 'level']);
+
     if (status.get('reblog', null) !== null && typeof status.get('reblog') === 'object') {
       let displayName = status.getIn(['account', 'display_name']);
 
@@ -87,13 +89,21 @@ const Status = React.createClass({
       }
     }
 
-    let status_content = <StatusContent status={status} onClick={this.handleClick} />;
-    if (!status.get('is_siritori_success')) {
-      status_content = <strike>{status_content}</strike>
+    let statusContent = <StatusContent status={status} onClick={this.handleClick} />;
+    let statusClass = 'status';
+
+    //しりとり失敗時に打ち消し線を入れる
+    //if (!status.get('is_siritori_success')) {
+    //  statusContent = <strike>{statusContent}</strike>
+    //}
+
+    if (status.get('is_siritori_success')) {
+      //しりとり成功時にstyleを変える
+      statusClass += ' is_siritori_success';
     }
 
     return (
-      <div className={this.props.muted ? 'status muted' : 'status'}>
+      <div className={this.props.muted ? statusClass + ' muted' : statusClass}>
         <div style={{ fontSize: '15px' }}>
           <div style={{ float: 'right', fontSize: '14px' }}>
             <a href={status.get('url')} className='status__relative-time' target='_blank' rel='noopener'><RelativeTimestamp timestamp={status.get('created_at')} /></a>
@@ -108,7 +118,7 @@ const Status = React.createClass({
           </a>
         </div>
 
-        {status_content}
+        {statusContent}
 
         {media}
 

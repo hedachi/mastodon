@@ -13,7 +13,7 @@ class PostStatusService < BaseService
   # @option [Doorkeeper::Application] :application
   # @return [Status]
   def call(account, text, in_reply_to = nil, options = {})
-    is_siritori_success = SiritoriService.new.is_success?(text)
+    is_siritori_success = SiritoriService.new.is_success?(text, account)
 
     media  = validate_media!(options[:media_ids])
     status = account.statuses.create!(text: text,
